@@ -24,13 +24,14 @@ The next figure show the learning curve during training, considering the modifie
 
 <img src="https://github.com/ryuuji06/keyword-spotting/blob/main/images/ex_hist.png" width="400">
 
+The next figure shows the model outputs (probabilities of each token) when inputing a sample signal from Librispeech, with the sentence
 
+`He was young. No Spear Had touched him. No Poison Lurked in his wine`
+
+The last token (cyan) is the null character token, inherent of the CTC algorithm, and encodes no actual character.  A posterior handling of the predicted tokens is performed to remove token duplicates in sequence, which is necessary when using CTC. Note that the model detected correctly the keywords and non-keywords present in the speech, and resonably aligned their positions to the actual moment they are spoken. The only alignment problem occurs with the first token, which is early predicted at the beginning of the output sequence.
 
 <img src="https://github.com/ryuuji06/keyword-spotting/blob/main/images/ex_prediction.png" width="800">
 
-this
-
-visualize features of word "down".
 
 ## References
 
