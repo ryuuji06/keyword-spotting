@@ -10,15 +10,21 @@ The input speech signal is preprocessed to extract 13 mel-frequency cepstral coe
 
 In this test, I specifically trained the model to identify the following eight keywords: `house`, `right`, `down`, `left`, `no`, `five`, `one`, `three`. Also, there is the token for non-keywords and the additional "null-element" token of the CTC algorithm, totalizing 10 output tokens. To train the network, I use a subset of the Google Speech Commands dataset [6] that contains isolated speech data for these keywords, and to train the detection of the keywords within entire spoken sentences, I use the Librispeech dataset [7].
 
-As the occurences of the keywords in Librispeech is very low, the network is induced to predict non-keywords almost all the time, yielding an undesirabl behavior. To remedy this issue, I restrict the number of input samples of Librispeech that does not contain any keyword, and create a third dataset: I concatenate multiple speech signals from Speech Commands, keywords or not, to form sequences with multiple occurences of keywords in the same signal sample. This additional modification of the dataset improved a lot the prediction performance of the model.
+As the occurences of the keywords in Librispeech is very low, the network is induced to predict non-keywords almost all the time, yielding an undesirable behavior. To remedy this issue, I restrict the number of input samples of Librispeech that does not contain any keyword, and create a third dataset: I concatenate multiple speech signals from Speech Commands, keywords or not, to form sequences with multiple occurences of keywords in the same signal sample. This additional modification of the dataset improved a lot the prediction performance of the model.
 
 ## About the model
 
 ## Sample results
 
+The figure below illustrates a speech signal and their features (spectrogram and MFCCs). It is an example for the word "down". While the spectrogram requires 257 coefficients to represent a single signal frame, we can compactly represent it with 13 MFCCs.
+
 <img src="https://github.com/ryuuji06/keyword-spotting/blob/main/images/ex_speech_features.png" width="700">
 
+The next figure show the learning curve during training, considering the modified dataset strategy (history and models stored in folder `results03`). 
+
 <img src="https://github.com/ryuuji06/keyword-spotting/blob/main/images/ex_hist.png" width="400">
+
+
 
 <img src="https://github.com/ryuuji06/keyword-spotting/blob/main/images/ex_prediction.png" width="800">
 
