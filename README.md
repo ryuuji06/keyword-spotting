@@ -16,6 +16,9 @@ As the occurences of the keywords in Librispeech is very low, the network is ind
 
 ## Sample results
 
+https://github.com/ryuuji06/keyword-spotting/blob/main/images/ex_speech_features.png
+https://github.com/ryuuji06/keyword-spotting/blob/main/images/ex_hist.png
+https://github.com/ryuuji06/keyword-spotting/blob/main/images/ex_prediction.png
 this
 
 visualize features of word "down".
