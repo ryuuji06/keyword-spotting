@@ -14,6 +14,14 @@ As the occurences of the keywords in Librispeech is very low, the network is ind
 
 ## About the model
 
+The tested model begins with a batch normalization step. Then, the batch normalized MFCCs propagates through five layers:
+
+ - Conv1D layer, 32 kernels of size 5x5, unit stride, followed by ReLU activation and Max Pooling stride 2;
+ - Conv2D layer, 64 kernels of size 5x5, unit stride, followed by ReLU activation and Max Pooling stride 2;
+ - Bidirectional LSTM layer with 128 units, with dropout;
+ - Bidirectional LSTM layer with 128 units, with dropout;
+ - Dense layer with 10 units (8 keyword tokens, 1 non-keyword token and CTC null token) with softmax activation.
+
 ## Sample results
 
 The figure below illustrates a speech signal and their features (spectrogram and MFCCs). It is an example for the word "down". While the spectrogram requires 257 coefficients to represent a single signal frame, we can compactly represent it with 13 MFCCs.
@@ -26,7 +34,7 @@ The next figure show the learning curve during training, considering the modifie
 
 The next figure shows the model outputs (probabilities of each token) when inputing a sample signal from Librispeech, with the sentence
 
-`He was young. No Spear Had touched him. No Poison Lurked in his wine`
+`He was young. No spear had touched him. No poison lurked in his wine`
 
 The last token (cyan) is the null character token, inherent of the CTC algorithm, and encodes no actual character.  A posterior handling of the predicted tokens is performed to remove token duplicates in sequence, which is necessary when using CTC. Note that the model detected correctly the keywords and non-keywords present in the speech, and resonably aligned their positions to the actual moment they are spoken. The only alignment problem occurs with the first token, which is early predicted at the beginning of the output sequence.
 
