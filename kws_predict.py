@@ -207,7 +207,7 @@ with open(folder+"/hist.pickle", 'rb') as f:
     hist = pickle.load(f)
 
 # load model
-model_train, model_pred = build_model_1(FEAT_DIM, NUM_KWD)
+model_train, model_pred = build_model_2(FEAT_DIM, NUM_KWD)
 model_pred.load_weights(folder+'/'+model_name)
 
 
