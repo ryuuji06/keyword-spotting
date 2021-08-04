@@ -277,7 +277,7 @@ print('\n(3) BUILD MODEL AND TRAIN')
 # =====================================================
 
 # Get the model
-model_train, model_pred = build_model_1(FEAT_DIM, NUM_KWD)
+model_train, model_pred = build_model_2(FEAT_DIM, NUM_KWD)
 model_train.summary()
 
 pickle_path = resultfolder+'/hist.pickle'
