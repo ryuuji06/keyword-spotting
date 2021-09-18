@@ -16,6 +16,15 @@ As the occurences of the keywords in Librispeech is very low, the network is ind
 
 ## Usage Instructions
 
+### (1) Download Datasets
+
+### (2) Convert LibriSpeech Files to WAV
+
+### (3) Prepare Datasets
+
+### (4) Train model
+
+### (5) Evaluation and Prediction
 
 
 ## About the model
@@ -59,8 +68,8 @@ The last token (cyan) is the null character token, inherent of the CTC algorithm
 
 [5] S. Fernandez, A. Graves, and J. Schmidhuber. "An application of recurrent neural networks to discriminative keyword spotting". Proceedings of the International Conferencce on Artificial Neural Networks (ICANN), 2007, pp. 220–229.
 
-[6] P. Warden. "Speech commands: a dataset for limited-vocabulary speech recognition". 2018.
+[6] P. Warden. "Speech commands: a dataset for limited-vocabulary speech recognition". 2018. http://download.tensorflow.org/data/speech_commands_v0.02.tar.gz
 
-[7] V. Panayotov, G. Chen, D. Povey, and S. Khudanpur. "Librispeech: an ASR corpus based on public domain audio books". Proceedings of the IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2015, p. 5206-5210.
+[7] V. Panayotov, G. Chen, D. Povey, and S. Khudanpur. "Librispeech: an ASR corpus based on public domain audio books". Proceedings of the IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2015, p. 5206-5210. https://www.openslr.org/12
 
 [8] Microsoft Scalable Noisy Speech Dataset. https://github.com/microsoft/MS-SNSD
