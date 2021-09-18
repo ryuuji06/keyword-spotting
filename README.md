@@ -20,12 +20,19 @@ As the occurences of the keywords in Librispeech is very low, the network is ind
 
 First, download the datasets you will use to train your model. Any dataset can be used, although it is easier to use Google Speech Commands [6] and LibriSpeech [7] (I used the `train-clean-100.tar.gz` subset), because I already implemented functions to read these specific datasets in `functions_datasets.py`.
 
-Optionally, you can also download a dataset of additional background noise. I used MS-SNSD [8] (noise-train) in my tests.
+Optionally, you can also download a dataset of additional background noise. I used MS-SNSD [8] (`noise-train`) in my tests.
 
 (This additional noise would intuitively improve the robustness of the detection. However, in my tests, it did not improve the evauation metrics, and actually even degraded the online performance I tested with my microphone.)
 
-
 ### (2) Convert LibriSpeech Files to WAV
+
+LibriSpeech files are originally in FLAC format. As I use Tensorflow audio decoder, the files must be in WAV format. Just move `flac2wav.sh` to the dataset folder and run it (uses avconv program from libav http://builds.libav.org/windows/nightly-gpl/). If you are in Unix system, just run
+
+`./flac2wav.sh`
+
+or, if you are in Windows,
+
+`powershell ./flac2wav.sh`
 
 ### (3) Prepare Datasets
 
