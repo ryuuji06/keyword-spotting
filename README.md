@@ -26,7 +26,7 @@ Optionally, you can also download a dataset of additional background noise. I us
 
 ### (2) Convert LibriSpeech Files to WAV
 
-LibriSpeech files are originally in FLAC format. As I use Tensorflow audio decoder, the files must be in WAV format. Just move `flac2wav.sh` to the dataset folder and run it (uses avconv program from libav http://builds.libav.org/windows/nightly-gpl/). If you are in Unix system, just run
+LibriSpeech files are originally in FLAC format. As I use Tensorflow audio decoder, the files must be in WAV format. Just move `flac2wav.sh` to the dataset folder and run it (uses avconv program from libav http://builds.libav.org/windows/nightly-gpl/, if you don't alrerady have it). If you are in Unix system, just run
 
 `./flac2wav.sh`
 
@@ -36,9 +36,17 @@ or, if you are in Windows,
 
 ### (3) Prepare Datasets
 
+To improve performance, I generate an additional dataset with multiple keywords per audio sample out of Google Speech Commands. You can generate it by running `create_dataset.py`. In the first lines of the code, you can edit some settings, such as the folder paths, the keywords you want to use, the number of samples per keyword, etc.
+
+`prepare_datasets.py`
+
 ### (4) Train model
 
+-
+
 ### (5) Evaluation and Prediction
+
+-
 
 ### (6) Online Implementation
 
