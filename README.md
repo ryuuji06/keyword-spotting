@@ -10,13 +10,20 @@ In this work, I use a CNN-RNN network with a CTC loss function [1], as in [5]. S
 
 The input speech signal is preprocessed to extract 13 mel-frequency cepstral coefficents (MFCC) for each frame. The MFCCs are preferably used in speech recognition tasks because it captures well the distinctions between phonemes and is more compact than a direct usage of the spectrogram.
 
-In this test, I specifically trained the model to identify the following eight keywords (arbitrarily chosen from publicly available datasets): `house`, `right`, `down`, `left`, `no`, `five`, `one` and `three`. Also, there is the token for non-keywords and the additional "null-element" token of the CTC algorithm, totalizing 10 output tokens. To train the network, I use a subset of the Google Speech Commands dataset [6] that contains isolated speech data for these keywords, and to train the detection of the keywords within entire spoken sentences, I use the Librispeech dataset [7].
+In this test, I specifically trained the model to identify the following eight keywords (arbitrarily chosen from publicly available datasets): `house`, `right`, `down`, `left`, `no`, `five`, `one` and `three`. To train the network, I use a subset of the Google Speech Commands dataset [6] that contains isolated speech data for these keywords, and to train the detection of the keywords within entire spoken sentences, I use the Librispeech dataset [7].
 
 As the occurences of the keywords in Librispeech is very low, the network is induced to predict non-keywords almost all the time, yielding an undesirable behavior. To remedy this issue, I restrict the number of input samples of Librispeech that does not contain any keyword, and create a third dataset: I concatenate multiple speech signals from Speech Commands, keywords or not, to form sequences with multiple occurences of keywords in the same signal sample. This additional modification of the dataset improved a lot the prediction performance of the model.
 
 ## Usage Instructions
 
 ### (1) Download Datasets
+
+First, download the datasets you will use to train your model. Any dataset can be used, although it is easier to use Google Speech Commands [6] and LibriSpeech [7] (I used the `train-clean-100.tar.gz` subset), because I already implemented functions to read these specific datasets in `functions_datasets.py`.
+
+Optionally, you can also download a dataset of additional background noise. I used MS-SNSD [8] (noise-train) in my tests.
+
+(This additional noise would intuitively improve the robustness of the detection. However, in my tests, it did not improve the evauation metrics, and actually even degraded the online performance I tested with my microphone.)
+
 
 ### (2) Convert LibriSpeech Files to WAV
 
@@ -25,6 +32,8 @@ As the occurences of the keywords in Librispeech is very low, the network is ind
 ### (4) Train model
 
 ### (5) Evaluation and Prediction
+
+### (6) Online Implementation
 
 
 ## About the model
