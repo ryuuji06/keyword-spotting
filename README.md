@@ -1,5 +1,6 @@
 # Real-Time Keyword Spotting
 
+
 ## Introduction
 
 In this repository, I implement a system for detecting specific spoken words in speech signals, task known as **keyword spotting** (KWS). When reading a speech signal, I detect not only the presence, but also the time position of the keyword. For this purpose, I use a CNN-RNN network, with a CTC (Connectionist Temporal Classification) loss function [1]. As the system is causal (I se only unidirectional LSTMs), it can also work in real-time. I also make a real-time implementation of the KWS system.
@@ -13,6 +14,7 @@ The input speech signal is preprocessed to extract 13 mel-frequency cepstral coe
 In this test, I specifically trained the model to identify the following eight keywords (arbitrarily chosen from publicly available datasets): `house`, `right`, `down`, `left`, `no`, `five`, `one` and `three`. To train the network, I use a subset of the Google Speech Commands dataset [6] that contains isolated speech data for these keywords, and to train the detection of the keywords within entire spoken sentences, I use the Librispeech dataset [7].
 
 As the occurences of the keywords in Librispeech is very low, the network is induced to predict non-keywords almost all the time, yielding an undesirable behavior. To remedy this issue, I restrict the number of input samples of Librispeech that does not contain any keyword, and create a third dataset: I concatenate multiple speech signals from Speech Commands, keywords or not, to form sequences with multiple occurences of keywords in the same signal sample. This additional modification of the dataset improved a lot the prediction performance of the model.
+
 
 ## Usage Instructions
 
@@ -38,11 +40,15 @@ or, if you are in Windows,
 
 To improve performance, I generate an additional dataset with multiple keywords per audio sample out of Google Speech Commands. You can generate it by running `create_dataset.py`. In the first lines of the code, you can edit some settings, such as the folder paths, the keywords you want to use, the number of samples per keyword, etc.
 
-`prepare_datasets.py`
+When training or evaluating the model, the codes read a file with the path and transcription of previously selected audio files. You generate this file by running `prepare_datasets.py`, which also generates a file containing the some info of the datasets, such as the number of samples per keyword. You can edit some settings, such as dataset paths, seleccted keywords and samples restriction in the first lines of  the code.
+
 
 ### (4) Train model
 
--
+Run `kws_train.py`. Commands passed by parsing commands.
+
+Restricted number of built-in models, defined in `models.py`.
+
 
 ### (5) Evaluation and Prediction
 
@@ -50,6 +56,7 @@ To improve performance, I generate an additional dataset with multiple keywords 
 
 ### (6) Online Implementation
 
+Currently implemented only for model MFCC 1.
 
 ## About the model
 
