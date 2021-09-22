@@ -24,7 +24,7 @@ Install the required packages by running the following:
 
 `pip install -r requirements.txt`
 
-If you are in Windows, you might find trouble installing PyAudio. If this is the case, you must download the appropriate `.whl` file directly from the PyAudio repository, as instructed in
+If you are in Windows, you might find trouble installing PyAudio (required only for real-time implementation). If this is the case, you must download the appropriate `.whl` file directly from the PyAudio repository, as instructed in
 
 https://stackoverflow.com/questions/52283840/i-cant-install-pyaudio-on-windows-how-to-solve-error-microsoft-visual-c-14
 
@@ -93,26 +93,25 @@ I have tested some different network models, but they all have a similar concept
 
  - MFCC feature extraction;
  - Batch normalization;
- - Conv1D (kernel size 3, 32 filters, ReLU); Conv1D (kernel size 3, 32 filters), batch normalization; ReLU; Max Pooling (kernel size and stride 2);
- - Conv1D (kernel size 3, 64 filters, ReLU); Conv1D (kernel size 3, 64 filters), batch normalization; ReLU; Max Pooling (kernel size and stride 2);
- - Conv1D (kernel size 3, 128 filters, ReLU); Conv1D (kernel size 3, 128 filters), batch normalization; ReLU; Max Pooling (kernel size and stride 2);
+ - Convolutional block below, with N = 32 filters;
+ - Convolutional block below, with N = 64 filters;
+ - Convolutional block below, with N = 128 filters;
  - Unidirectional LSTM layer with 128 units, with dropout rate 0.25;
  - Unidirectional LSTM layer with 128 units, with dropout rate 0.25;
  - Dense layer with 10 units (8 keyword tokens, 1 non-keyword token and CTC null token) with softmax activation.
 
-(better to use block A figure)
+<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/figures/block_diagram_conv1.png" width="150">
 
-<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/figures/block_diagram_conv1.png" width="200">
 
 ## Sample results
 
-The figure below illustrates a speech signal and their features (spectrogram and MFCCs). It is an example for the word "down". While the spectrogram requires 257 coefficients to represent a single signal frame, we can compactly represent it with 13 MFCCs.
+The figure below illustrates a speech signal and their features (mel-spectrogram and MFCCs). It is an example for the spoken word "left".
 
-<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/figures/illust_features_1.png" width="600">
+<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/figures/illust_features_1.png" width="500">
 
 The next figure show the learning curve during training, considering the modified dataset strategy (history and models stored in folder `results03`). 
 
-<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/figures/learning_curves.png" width="400">
+<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/figures/learning_curves.png" width="600">
 
 <img src="https://github.com/ryuuji06/keyword-spotting/blob/main/figures/performance_table.png" width="300">
 
@@ -122,7 +121,7 @@ The next figure shows the model outputs (probabilities of each token) when input
 
 The last token (cyan) is the null character token, inherent of the CTC algorithm, and encodes no actual character.  A posterior handling of the predicted tokens is performed to remove token duplicates in sequence, which is necessary when using CTC. Note that the model detected correctly the keywords and non-keywords present in the speech, and resonably aligned their positions to the actual moment they are spoken. The only alignment problem occurs with the first token, which is early predicted at the beginning of the output sequence.
 
-<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/figures/prediction_example_2.png" width="800">
+<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/figures/prediction_example_2.png" width="600">
 
 <img src="https://github.com/ryuuji06/keyword-spotting/blob/main/figures/online_test.png" width="400">
 
