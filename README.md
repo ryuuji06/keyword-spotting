@@ -100,20 +100,20 @@ I have tested some different network models, but they all have a similar concept
  - Unidirectional LSTM layer with 128 units, with dropout rate 0.25;
  - Dense layer with 10 units (8 keyword tokens, 1 non-keyword token and CTC null token) with softmax activation.
 
-<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/figures/block_diagram_conv1.png" width="150">
+<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/examples/figures/block_diagram_conv1.png" width="150">
 
 
 ## Sample results
 
 The figure below illustrates a speech signal and their features (mel-spectrogram and MFCCs). It is an example for the spoken word "left".
 
-<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/figures/illust_features_1.png" width="500">
+<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/examples/figures/illust_features_1.png" width="500">
 
 The next figure show the learning curve during training, considering the modified dataset strategy (history and models stored in folder `results03`). 
 
-<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/figures/learning_curves.png" width="600">
+<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/examples/figures/learning_curves.png" width="600">
 
-<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/figures/performance_table.png" width="300">
+<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/examples/figures/performance_table.png" width="300">
 
 The next figure shows the model outputs (probabilities of each token) when inputing a sample signal from Librispeech, with the sentence
 
@@ -121,9 +121,9 @@ The next figure shows the model outputs (probabilities of each token) when input
 
 The last token (cyan) is the null character token, inherent of the CTC algorithm, and encodes no actual character.  A posterior handling of the predicted tokens is performed to remove token duplicates in sequence, which is necessary when using CTC. Note that the model detected correctly the keywords and non-keywords present in the speech, and resonably aligned their positions to the actual moment they are spoken. The only alignment problem occurs with the first token, which is early predicted at the beginning of the output sequence.
 
-<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/figures/prediction_example_2.png" width="600">
+<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/examples/figures/prediction_example_2.png" width="600">
 
-<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/figures/online_test.png" width="400">
+<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/examples/figures/online_test.png" width="400">
 
 
 ## References
