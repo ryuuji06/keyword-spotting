@@ -1,0 +1,28 @@
+SELECTED DATA PROPERTIES
+
+keywords = ['house', 'right', 'down', 'left', 'no', 'five', 'one', 'three']
+Max. number of isolated keywords (Speech Commands): 1000
+Max. sentence length (in tokens)(for Librispeech): 40
+Number of sentence samples with no keywords (for Librispeech): 1000
+Length of noise signal: 00h 23min 14sec
+
+Speech Commands (isolated words)
+Total number of samples: 8000
+Occurences per keywords
+0	1000	1000	1000	1000	1000	1000	1000	1000	
+Samples containing keywords
+0	1000	1000	1000	1000	1000	1000	1000	1000	
+
+Speech Commands (edited)
+Total number of samples: 4679
+Occurences per keywords
+3600	1113	2000	2000	2000	2000	2000	2000	2000	
+Samples containing keywords
+2591	1003	1668	1652	1649	1657	1669	1652	1680	
+
+Librispeech
+Total number of samples: 16558
+Occurences per keywords
+501394	1488	1200	1983	1110	5427	732	6588	1416	
+Samples containing keywords
+16558	1413	1101	1890	1077	4854	681	5718	1323	

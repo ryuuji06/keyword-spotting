@@ -1,0 +1,26 @@
+Confusion Matrix
+keyword     TP        FN        FP
+house       697       26        5
+right       822       30        36
+down        902       60        17
+left        756       36        50
+no          1628      63        43
+five        683       31        47
+one         1903      53        42
+three       859       41        37
+
+Metrics per Keyword
+keyword     precision   recall      F1
+house       0.9929      0.9640      0.9782
+right       0.9580      0.9648      0.9614
+down        0.9815      0.9376      0.9591
+left        0.9380      0.9545      0.9462
+no          0.9743      0.9627      0.9685
+five        0.9356      0.9566      0.9460
+one         0.9784      0.9729      0.9756
+three       0.9587      0.9544      0.9566
+
+Average Metrics
+Precision: 0.9647
+Recall   : 0.9585
+F1       : 0.9614
