@@ -18,6 +18,10 @@ As the occurences of the keywords in Librispeech is very low, the network is ind
 
 ## Usage Instructions
 
+### (1) Install Required Python Packages
+
+`pip install -r requirements.txt`
+
 ### (1) Download Datasets
 
 First, download the datasets you will use to train your model. Any dataset can be used, although it is easier to use Google Speech Commands [6] and LibriSpeech [7] (I used the `train-clean-100.tar.gz` subset), because I already implemented functions to read these specific datasets in `functions_datasets.py`.
