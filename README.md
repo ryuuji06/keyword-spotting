@@ -89,6 +89,8 @@ I have tested some different network models, but they all have a similar concept
  - Unidirectional LSTM layer with 128 units, with dropout rate 0.25;
  - Dense layer with 10 units (8 keyword tokens, 1 non-keyword token and CTC null token) with softmax activation.
 
+(better to use block A figure)
+
 ## Sample results
 
 The figure below illustrates a speech signal and their features (spectrogram and MFCCs). It is an example for the word "down". While the spectrogram requires 257 coefficients to represent a single signal frame, we can compactly represent it with 13 MFCCs.
