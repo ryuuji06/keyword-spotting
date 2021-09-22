@@ -109,19 +109,23 @@ The figure below illustrates a speech signal and their features (mel-spectrogram
 
 <img src="https://github.com/ryuuji06/keyword-spotting/blob/main/examples/figures/illust_features_1.png" width="500">
 
-The next figure show the learning curve during training, considering the modified dataset strategy (history and models stored in folder `results03`). 
+The figure below shows the learning curve for the models within the `example` folder. Note that model 2 performs the best. All models are trained with no additive augmentation noise, except `Model 2 noise`, in which a background noise was added in 50% of the training and validations samples.
 
-<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/examples/figures/learning_curves.png" width="600">
+<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/examples/figures/learning_curves.png" width="700">
 
-<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/examples/figures/performance_table.png" width="300">
+The table below depicts the performance of each model, considering the metrics precision, recall and F1-score. These metrics were computed by counting the total number of true positive, false positives and false negatives detections for each keyword, and taking the mean.
 
-The next figure shows the model outputs (probabilities of each token) when inputing a sample signal from Librispeech, with the sentence
+<img src="https://github.com/ryuuji06/keyword-spotting/blob/main/examples/figures/performance_table.png" width="350">
 
-`He was young. No spear had touched him. No poison lurked in his wine`
+The next figure shows the network outputs (probabilities of each token) when inputing a sample signal from Librispeech, with the sentence
 
-The last token (cyan) is the null character token, inherent of the CTC algorithm, and encodes no actual character.  A posterior handling of the predicted tokens is performed to remove token duplicates in sequence, which is necessary when using CTC. Note that the model detected correctly the keywords and non-keywords present in the speech, and resonably aligned their positions to the actual moment they are spoken. The only alignment problem occurs with the first token, which is early predicted at the beginning of the output sequence.
+`certainly not to walk three miles or four miles or five miles.`
+
+The last token (dashed black line) is the null character token, inherent of the CTC algorithm, and encodes no actual character.  A posterior handling of the predicted tokens is performed to remove token duplicates in sequence, which is necessary when using CTC. Note that the model detected correctly the two keywords, and have not detected one of the fillers. This represents error though, since we are only interested in the keywords.
 
 <img src="https://github.com/ryuuji06/keyword-spotting/blob/main/examples/figures/prediction_example_2.png" width="600">
+
+The next figure illustrates the real-time application. It captures the instant when I said "no one left the house".
 
 <img src="https://github.com/ryuuji06/keyword-spotting/blob/main/examples/figures/online_test.png" width="400">
 
