@@ -56,16 +56,30 @@ Currently, there is only a few non-parametric built-in network models, defined i
 
 ### (5) Evaluation and Prediction
 
--
+To evaluate the model, I count the number of correct detections (true positives), the number of false positives and false negatives at each test sample, for each keyword, and compute precision, recall and F1-score. The global metrics for the model is then computed as the average of the metrics for each keyword.
 
-### (6) Online Implementation
+To evaluate the model, run `kws_evaluate.py`, for example, by
 
-Currently implemented only for model MFCC 1.
+`python kws_evaluate.py -d data -r result_01`
+
+It uses only the portion of data considered as validation during the training of the referenced result folder. It also generates a file `performance.txt` in the result folder recording the performance results.
+
+
+### (6) Real-time Implementation
+
+I also made a real-time implementation of the network, using PyAudio to capture the audio stream from a microphone device. It can be run as, for example,
+
+`python kws_realtime.py -r result_01`
+
+which runs using the model parameters stored in the result folder. Currently, it only uses the model number 2, which apparently gives the best result.
+
 
 ## About the model
 
-The tested model begins with a batch normalization step. Then, the batch normalized MFCCs propagates through five layers:
+I have tested some different network models, but they all have a similar concept of using some convolutional layers followed by recurrent ones. In the following, I describe the model number 2, which has given the best results in the tests.
 
+ - MFCC feature extraction
+ - Batch normalization
  - Conv1D layer, 32 kernels of size 5x5, unit stride, followed by ReLU activation and Max Pooling stride 2;
  - Conv2D layer, 64 kernels of size 5x5, unit stride, followed by ReLU activation and Max Pooling stride 2;
  - Bidirectional LSTM layer with 128 units, with dropout;
