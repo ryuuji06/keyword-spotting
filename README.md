@@ -78,12 +78,13 @@ which runs using the model parameters stored in the result folder. Currently, it
 
 I have tested some different network models, but they all have a similar concept of using some convolutional layers followed by recurrent ones. In the following, I describe the model number 2, which has given the best results in the tests.
 
- - MFCC feature extraction
- - Batch normalization
- - Conv1D layer, 32 kernels of size 5x5, unit stride, followed by ReLU activation and Max Pooling stride 2;
- - Conv2D layer, 64 kernels of size 5x5, unit stride, followed by ReLU activation and Max Pooling stride 2;
- - Bidirectional LSTM layer with 128 units, with dropout;
- - Bidirectional LSTM layer with 128 units, with dropout;
+ - MFCC feature extraction;
+ - Batch normalization;
+ - Conv1D (kernel size 3, 32 filters, ReLU); Conv1D (kernel size 3, 32 filters), batch normalization; ReLU; Max Pooling (kernel size and stride 2)
+ - Conv1D (kernel size 3, 64 filters, ReLU); Conv1D (kernel size 3, 64 filters), batch normalization; ReLU; Max Pooling (kernel size and stride 2)
+ - Conv1D (kernel size 3, 128 filters, ReLU); Conv1D (kernel size 3, 128 filters), batch normalization; ReLU; Max Pooling (kernel size and stride 2)
+ - Unidirectional LSTM layer with 128 units, with dropout rate 0.25;
+ - Unidirectional LSTM layer with 128 units, with dropout rate 0.25;
  - Dense layer with 10 units (8 keyword tokens, 1 non-keyword token and CTC null token) with softmax activation.
 
 ## Sample results
