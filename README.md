@@ -125,7 +125,7 @@ The last token (dashed black line) is the null character token, inherent of the 
 
 <img src="https://github.com/ryuuji06/keyword-spotting/blob/main/examples/figures/prediction_example_2.png" width="600">
 
-The next figure illustrates the real-time application. It captures the instant when I said "no one left the house".
+The next figure illustrates the real-time application. It captures the instant when I said "no one left the house". Note that it did not detected the keyword "one". In this real-time application, the network seemed not to perform as well as the metrics above ensure.
 
 <img src="https://github.com/ryuuji06/keyword-spotting/blob/main/examples/figures/online_test.png" width="400">
 
