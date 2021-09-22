@@ -64,6 +64,8 @@ To evaluate the model, run `kws_evaluate.py`, for example, by
 
 It uses only the portion of data considered as validation during the training of the referenced result folder. It also generates a file `performance.txt` in the result folder recording the performance results.
 
+In order to visualize the network outputs, you can run `kws_predict.py`, which prints, for some selected samples of the dataset, the audio signal and the network output token probabilities with Matplotlib, along with the label token sequence and the predicted sequence.
+
 
 ### (6) Real-time Implementation
 
