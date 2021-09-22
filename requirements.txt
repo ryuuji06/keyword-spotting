@@ -1,0 +1,7 @@
+numpy==1.19.5
+numpy-ringbuffer==0.2.1
+librosa==0.8.0
+pyparsing==2.4.0
+tensorflow==2.5.0
+matplotlib==3.0.3
+PyAudio==0.2.8
